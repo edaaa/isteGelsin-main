@@ -18,15 +18,12 @@ import org.springframework.web.bind.annotation.RestController;
 @Api
 @AllArgsConstructor
 public class StockController {
-
-
-   private final  StocksServices stocksServices; //isim coğul yapma
+    private final  StocksServices stocksServices; //isim coğul yapma
 
     @PostMapping(value = "/stock", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation("stock kaydetme işlemi gerçekleştirilir")
     public ResponseEntity<StockResponse> addStock(@RequestBody StockSaveDto stockSaveDto) {
         return new ResponseEntity<>( stocksServices.save(stockSaveDto), HttpStatus.OK);
-
     }
 
     @PostMapping(value = "/transfer", consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -35,6 +32,5 @@ public class StockController {
         return new ResponseEntity<>( stocksServices.transfer(stockTransferDto), HttpStatus.OK);
 
     }
-
 
 }
