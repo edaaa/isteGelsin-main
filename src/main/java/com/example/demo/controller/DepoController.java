@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
 import com.example.demo.depots.dto.DepoCloseDto;
-import com.example.demo.depots.dto.DepoCreateDto;
 import com.example.demo.depots.dto.DepoDto;
 import com.example.demo.depots.dto.DepoResponse;
 import com.example.demo.services.DepoServices;
@@ -19,19 +18,18 @@ import org.springframework.web.bind.annotation.RestController;
 @Api
 public class DepoController {
 
-    @Autowired
-    DepoServices depoServices;
+  @Autowired
+  DepoServices depoServices;
 
-    @PostMapping(value = "/depo", consumes = MediaType.APPLICATION_JSON_VALUE)
-    @ApiOperation("depo kaydetme işlemi gerçekleştirilir")
-    public ResponseEntity<DepoResponse> createDepo(@RequestBody DepoDto depoDto) {
-        return new ResponseEntity<>( depoServices.save(depoDto), HttpStatus.OK);
+  @PostMapping(value = "/depo", consumes = MediaType.APPLICATION_JSON_VALUE)
+  @ApiOperation("depo kaydetme işlemi gerçekleştirilir")
+  public ResponseEntity<DepoResponse> createDepo(@RequestBody DepoDto depoDto) {
+    return new ResponseEntity<>(depoServices.save(depoDto), HttpStatus.OK);
+  }
 
-    }
-    @PostMapping(value = "/depo/close", consumes = MediaType.APPLICATION_JSON_VALUE)
-    @ApiOperation("depo kapatma işlemi gerçekleştirilir")
-    public ResponseEntity<DepoResponse> closeDepo(@RequestBody DepoCloseDto  depoCloseDto) {
-        return new ResponseEntity<>( depoServices.closeDepo(depoCloseDto), HttpStatus.OK);
-
-    }
+  @PostMapping(value = "/depo/close", consumes = MediaType.APPLICATION_JSON_VALUE)
+  @ApiOperation("depo kapatma işlemi gerçekleştirilir")
+  public ResponseEntity<DepoResponse> closeDepo(@RequestBody DepoCloseDto depoCloseDto) {
+    return new ResponseEntity<>(depoServices.closeDepo(depoCloseDto), HttpStatus.OK);
+  }
 }
