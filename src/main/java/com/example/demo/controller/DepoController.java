@@ -22,7 +22,6 @@ public class DepoController {
     @Autowired
     DepoServices depoServices;
 
-
     @PostMapping(value = "/depo", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation("depo kaydetme işlemi gerçekleştirilir")
     public ResponseEntity<DepoResponse> createDepo(@RequestBody DepoDto depoDto) {
